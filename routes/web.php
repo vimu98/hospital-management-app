@@ -23,7 +23,13 @@ Route::get("/approved/{id}", [AdminController::class,"approved"]);
 
 Route::get("/canceled/{id}", [AdminController::class,"canceled"]);
 
-Route::get("/canceled/{id}", [AdminController::class,"canceled"]);
+Route::get("/showdoctors", [AdminController::class,"showdoctors"]);
+
+Route::get("/deletedoctor/{id}", [AdminController::class,"deletedoctor"]);
+
+Route::get("/updatedoctor/{id}", [AdminController::class,"updatedoctor"]);
+
+Route::post("/editdoctor/{id}", [AdminController::class,"editdoctor"]);
 
 Route::group(['middleware' => 'guest'], function () {
     Route::get('/register', [AuthController::class, 'register'])->name('register');
