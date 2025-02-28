@@ -9,6 +9,8 @@ Route::get("/", [HomeController::class,"index"]);
 
 Route::get("/add_doctor_view", [AdminController::class,"addview"]);
 
+Route::post("/upload_doctor", [AdminController::class,"upload"]);
+
 Route::group(['middleware' => 'guest'], function () {
     Route::get('/register', [AuthController::class, 'register'])->name('register');
     Route::post('/register', [AuthController::class, 'registerPost'])->name('register');
