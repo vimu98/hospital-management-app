@@ -1,7 +1,14 @@
-@extends('layouts.app')
-
-@section('content')
-
-  
-        <h1>Welcome Admin</h1>
-@endsection
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+   @include('admin.css')
+  </head>
+  <body>
+    <div class="container-scroller">
+        @include('admin.sidebar')
+      @include('admin.navbar')
+       @include('admin.body')
+       @include('admin.script')
+    </div>
+  </body>
+</html>
