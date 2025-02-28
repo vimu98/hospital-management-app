@@ -11,6 +11,10 @@ Route::get("/add_doctor_view", [AdminController::class,"addview"]);
 
 Route::post("/upload_doctor", [AdminController::class,"upload"]);
 
+Route::post("/appoinment", [HomeController::class,"appoinment"]);
+
+Route::get("/myappoinment", [HomeController::class,"myappoinment"]);
+
 Route::group(['middleware' => 'guest'], function () {
     Route::get('/register', [AuthController::class, 'register'])->name('register');
     Route::post('/register', [AuthController::class, 'registerPost'])->name('register');
