@@ -15,6 +15,16 @@ Route::post("/appoinment", [HomeController::class,"appoinment"]);
 
 Route::get("/myappoinment", [HomeController::class,"myappoinment"]);
 
+Route::get("/cancal_appoint/{id}", [HomeController::class,"cancal_appoint"]);
+
+Route::get("/showappintment", [AdminController::class,"showappintment"]);
+
+Route::get("/approved/{id}", [AdminController::class,"approved"]);
+
+Route::get("/canceled/{id}", [AdminController::class,"canceled"]);
+
+Route::get("/canceled/{id}", [AdminController::class,"canceled"]);
+
 Route::group(['middleware' => 'guest'], function () {
     Route::get('/register', [AuthController::class, 'register'])->name('register');
     Route::post('/register', [AuthController::class, 'registerPost'])->name('register');

@@ -37,7 +37,8 @@ class homeController extends Controller
         }
     }
 
-    public function appoinment(Request $request){
+    public function appoinment(Request $request)
+    {
 
         $data = new Appoinment;
 
@@ -47,23 +48,37 @@ class homeController extends Controller
         $data->phone = $request->phone;
         $data->message = $request->message;
         $data->doctor = $request->doctor;
-        $data->status ='In progress';
+        $data->status = 'In progress';
 
-        if(Auth::id()){
-            $data->user_id =Auth::user()->id;
+        if (Auth::id()) {
+            $data->user_id = Auth::user()->id;
 
         }
-      
+
         $data->save();
 
         return redirect()->back()->with('success', 'Appoinment request successfully. We contact you soon');
     }
 
-    public function myappoinment(){
+    public function myappoinment()
+    {
         if (Auth::id()) {
-        return view('user.my_appointent');
+            $userid=Auth::user()->id;
+            $appoint=Appoinment::where('user_id',$userid)->get();
+
+            return view('user.my_appointent', compact('appoint'));
+
         } else {
-            return redirect()->back(); 
+            return redirect()->back();
+
         }
+    }
+
+    public function cancal_appoint($id){
+
+        $data = Appoinment::find($id);
+        $data ->delete();
+        return redirect()->back();
+
     }
 }

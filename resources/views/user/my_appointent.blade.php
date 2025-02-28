@@ -87,18 +87,24 @@
 
     <div align="center" style="padding: 70px">
         <table>
-            <tr style="background-color: rgb(163, 236, 163)">
-                <th style="padding: 10px; font-size: 20px; color: white;">Doctor Name</th>
+            <tr style="background-color: rgb(89, 234, 227)">
+                <th style="padding: 10px; font-size: 20px; color: white;">Doctor name</th>
                 <th style="padding: 10px; font-size: 20px; color: white;">Date</th>
                 <th style="padding: 10px; font-size: 20px; color: white;">Message</th>
                 <th style="padding: 10px; font-size: 20px; color: white;">Status</th>
+                <th style="padding: 10px; font-size: 20px; color: white;">Cancal Appointment</th>
             </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+            @foreach ($appoint as $appoints)
+                
+            <tr style="background-color: rgb(166, 238, 233)" align="center">
+                <td style="padding: 10px;  color: white;">{{$appoints->doctor}}</td>
+                <td style="padding: 10px;  color: white;">{{$appoints->date}}</td>
+                <td style="padding: 10px;  color: white;">{{$appoints->message}}</td>
+                <td style="padding: 10px;  color: white;">{{$appoints->status}}</td>
+                <td><a class="btn btn-danger" onclick="return confirm('Are you sure to delete this appointment?')" href="{{url('cancal_appoint', $appoints->id)}}">Cancal</a></td>
             </tr>
+
+            @endforeach
         </table>
     </div>
 
