@@ -5,7 +5,7 @@
     <base href="/public">
 
     <style>
-        label{
+        label {
             display: inline-block;
             width: 200px;
         }
@@ -21,33 +21,44 @@
         <div class="container-fluid page-body-wrapper">
 
             <div class="container" align="center" style="padding:100px;">
-                <form action="{{url('editdoctor', $data->id)}}" method="post" enctype="multipart/form-data">
+
+                @if (session()->has('success'))
+                    <div class="alert alert-success">
+                        <button type="button" class="close" data-dismiss="alert">
+                            x
+                        </button>
+                        {{ session()->get('success') }}
+                    </div>
+                @endif
+
+
+                <form action="{{ url('editdoctor', $data->id) }}" method="post" enctype="multipart/form-data">
 
                     @csrf
 
                     <div style="padding: 15px;">
                         <label for="">Doctor Name</label>
-                        <input type="text" style="black" value="{{$data->name}}" name="name">
+                        <input type="text" style="black" value="{{ $data->name }}" name="name">
                     </div>
 
                     <div style="padding: 15px;">
                         <label for="">Phone</label>
-                        <input type="text" style="black" value="{{$data->phone}}" name="phone">
+                        <input type="text" style="black" value="{{ $data->phone }}" name="phone">
                     </div>
 
                     <div style="padding: 15px;">
                         <label for="">Speciality</label>
-                        <input type="text" style="black" value="{{$data->speciality}}" name="speciality">
+                        <input type="text" style="black" value="{{ $data->speciality }}" name="speciality">
                     </div>
 
                     <div style="padding: 15px;">
                         <label for="">Room No</label>
-                        <input type="text" style="black" value="{{$data->room}}" name="room">
+                        <input type="text" style="black" value="{{ $data->room }}" name="room">
                     </div>
 
                     <div style="padding: 15px;">
                         <label for="">Old Image</label>
-                        <img height="150" width="150" src="docorimage/{{$data->image}}" alt="">
+                        <img height="150" width="150" src="docorimage/{{ $data->image }}" alt="">
                     </div>
 
                     <div style="padding: 15px;">
@@ -62,7 +73,7 @@
                 </form>
 
             </div>
-            
+
         </div>
         @include('admin.script')
     </div>
